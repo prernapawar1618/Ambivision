@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup Documentation — AmbiVision</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <style>
+    .docs-content { max-width: 800px; margin: 0 auto; padding: 0 0 6rem; }
+    .docs-content h2 { font-family: 'Clash Display', sans-serif; font-size: 1.4rem; font-weight: 700; margin: 2.75rem 0 1rem; color: var(--c-text-primary); border-bottom: 1px solid var(--c-border); padding-bottom: 0.5rem; }
+    .docs-content h3 { font-size: 1rem; font-weight: 600; margin: 1.75rem 0 0.5rem; color: var(--c-text-primary); }
+    .docs-content p { color: var(--c-text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .docs-content ul, .docs-content ol { color: var(--c-text-secondary); line-height: 1.8; margin-bottom: 1rem; padding-left: 1.5rem; }
+    .docs-content li { margin-bottom: 0.4rem; }
+    code {
+      font-family: monospace;
+      font-size: 0.85em;
+      background: rgba(39,39,45,0.8);
+      border: 1px solid var(--c-border);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      color: var(--c-cyan);
+    }
+    pre {
+      background: var(--c-carbon);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1.25rem;
+    }
+    pre code { background: none; border: none; padding: 0; color: var(--c-text-primary); font-size: 0.82rem; line-height: 1.8; }
+    .callout {
+      background: rgba(37,99,235,0.08);
+      border: 1px solid rgba(37,99,235,0.25);
+      border-radius: var(--r-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .callout.warning {
+      background: rgba(180,83,9,0.08);
+      border-color: rgba(180,83,9,0.25);
+    }
+    .callout p { margin: 0; color: var(--c-text-secondary); }
+  </style>
+</head>
+<body>
+  <header style="position:relative; background:var(--c-carbon); border-bottom:1px solid var(--c-border);">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; padding-top:1.5rem; padding-bottom:1.5rem;">
+      <a href="../index.html" class="nav-logo">
+        <div class="logo-mark"><div class="logo-inner"><span class="logo-letter">A</span></div></div>
+        <div class="logo-text-group">
+          <span class="logo-name">AmbiVision</span>
+          <span class="logo-tagline">Developer Documentation</span>
+        </div>
+      </a>
+      <a href="../index.html" class="btn btn-ghost btn-sm">← Back to Home</a>
+    </div>
+  </header>
+
+  <main>
+    <div style="padding: 5rem 0 3rem;">
+      <div class="container">
+        <span class="label" style="margin-bottom:1rem;"><i data-lucide="book-open" style="width:14px;height:14px;"></i> Developer Docs</span>
+        <h1 class="section-title" style="font-size:var(--fs-4xl); margin-bottom:0.75rem;">Setup Documentation</h1>
+        <p style="color:var(--c-text-muted); font-size:var(--fs-sm);">Everything you need to configure AmbiVision for production.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="docs-content">
+
+        <h2>1. Project Structure</h2>
+        <pre><code>Ambivision Website/
+├── index.html          ← Main website (all sections)
+├── css/
+│   └── main.css        ← Design system + all styles
+├── js/
+│   └── main.js         ← All JavaScript functionality
+└── pages/
+    ├── privacy.html    ← Privacy Policy
+    ├── terms.html      ← Terms of Service
+    ├── 404.html        ← Custom 404
+    └── setup.html      ← This file
+</code></pre>
+
+        <h2>2. Contact Form Backend</h2>
+        <p>The contact form currently shows an "honest failure" state because no backend endpoint is configured. To activate form submissions, choose one of these options:</p>
+
+        <h3>Option A: Formspree (Easiest — No Backend Required)</h3>
+        <ol>
+          <li>Create an account at <a href="https://formspree.io" target="_blank" rel="noopener" style="color:var(--c-cyan);">formspree.io</a></li>
+          <li>Create a new form and note your Form ID (e.g., <code>xpzgkqrb</code>)</li>
+          <li>Open <code>js/main.js</code> and find the <code>initContactForm()</code> function</li>
+          <li>Replace the simulated fetch with:</li>
+        </ol>
+        <pre><code>const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  method: 'POST',
+  headers: { 'Accept': 'application/json' },
+  body: new FormData(form),
+});
+
+if (response.ok) {
+  formBody.style.display = 'none';
+  formSuccess.classList.add('show');
+} else {
+  throw new Error('Submission failed');
+}
+</code></pre>
+
+        <h3>Option B: EmailJS (Client-Side Email Sending)</h3>
+        <ol>
+          <li>Create an account at <a href="https://emailjs.com" target="_blank" rel="noopener" style="color:var(--c-cyan);">emailjs.com</a></li>
+          <li>Set up a service, template, and get your Service ID, Template ID, and Public Key</li>
+          <li>Add the EmailJS SDK in <code>index.html</code> before <code>js/main.js</code>:</li>
+        </ol>
+        <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"&gt;&lt;/script&gt;</code></pre>
+        <p>Then in the form handler:</p>
+        <pre><code>emailjs.init('YOUR_PUBLIC_KEY');
+await emailjs.send('SERVICE_ID', 'TEMPLATE_ID', {
+  from_name: data.name,
+  from_email: data.email,
+  message: data.description,
+  service: data.service,
+});
+</code></pre>
+
+        <h3>Option C: Custom API Endpoint</h3>
+        <p>If you have a backend server (Express, Next.js API route, etc.):</p>
+        <pre><code>const response = await fetch('/api/contact', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
+</code></pre>
+        <div class="callout warning">
+          <p>⚠️ <strong>Security:</strong> Never expose API keys in client-side JavaScript. Use server-side environment variables and proxy API calls through your backend.</p>
+        </div>
+
+        <h2>3. Domain Configuration</h2>
+        <p>Before going live, update the following in <code>index.html</code>:</p>
+        <pre><code>&lt;!-- Update canonical URL --&gt;
+&lt;link rel="canonical" href="https://YOUR-DOMAIN.com/"&gt;
+
+&lt;!-- Update OG URL --&gt;
+&lt;meta property="og:url" content="https://YOUR-DOMAIN.com/"&gt;
+
+&lt;!-- Update structured data URL --&gt;
+"url": "https://YOUR-DOMAIN.com"
+</code></pre>
+
+        <h2>4. Analytics (Optional)</h2>
+        <p>For privacy-respecting analytics, we recommend <a href="https://plausible.io" target="_blank" rel="noopener" style="color:var(--c-cyan);">Plausible</a> or <a href="https://umami.is" target="_blank" rel="noopener" style="color:var(--c-cyan);">Umami</a>. Add the snippet in <code>index.html</code> before <code>&lt;/head&gt;</code>:</p>
+        <pre><code>&lt;!-- Plausible Analytics --&gt;
+&lt;script defer data-domain="yourdomain.com"
+  src="https://plausible.io/js/script.js"&gt;&lt;/script&gt;
+</code></pre>
+
+        <h2>5. Hosting Options</h2>
+        <p>This is a static website — no build step required. You can host it on:</p>
+        <ul>
+          <li><strong>Netlify</strong>: Drag and drop the folder, or connect via Git. Free tier available.</li>
+          <li><strong>Vercel</strong>: Deploy via CLI or Git integration.</li>
+          <li><strong>GitHub Pages</strong>: Push to a repository and enable Pages.</li>
+          <li><strong>Cloudflare Pages</strong>: Fast global CDN with free tier.</li>
+          <li>Any standard web hosting with FTP upload.</li>
+        </ul>
+
+        <h2>6. SEO Checklist</h2>
+        <ul>
+          <li>☐ Update <code>&lt;link rel="canonical"&gt;</code> with your real domain</li>
+          <li>☐ Update Open Graph <code>og:image</code> with a real 1200×630 image</li>
+          <li>☐ Update the Organisation structured data with real contact details</li>
+          <li>☐ Add real social media profile URLs to the <code>sameAs</code> array in structured data</li>
+          <li>☐ Configure Google Search Console after deployment</li>
+          <li>☐ Submit sitemap (create manually or via a tool)</li>
+        </ul>
+
+        <h2>7. Sitemap</h2>
+        <p>Create a <code>sitemap.xml</code> in the root directory:</p>
+        <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://yourdomain.com/&lt;/loc&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://yourdomain.com/pages/privacy.html&lt;/loc&gt;
+    &lt;priority&gt;0.3&lt;/priority&gt;
+  &lt;/url&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://yourdomain.com/pages/terms.html&lt;/loc&gt;
+    &lt;priority&gt;0.3&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;
+</code></pre>
+
+        <h2>8. robots.txt</h2>
+        <p>Create a <code>robots.txt</code> in the root directory:</p>
+        <pre><code>User-agent: *
+Allow: /
+Disallow: /pages/setup.html
+
+Sitemap: https://yourdomain.com/sitemap.xml
+</code></pre>
+
+        <h2>9. Performance Tips</h2>
+        <ul>
+          <li>Host fonts locally using <code>@font-face</code> for faster load times</li>
+          <li>Convert images to WebP format if you add any</li>
+          <li>Enable GZIP/Brotli compression on your host</li>
+          <li>Add <code>&lt;link rel="preload"&gt;</code> for the CSS file</li>
+          <li>Use a CDN for static assets</li>
+        </ul>
+
+        <div class="callout">
+          <p>💡 For questions or help with setup, email us at <a href="mailto:hello@ambivision.studio" style="color:var(--c-cyan);">hello@ambivision.studio</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>lucide && lucide.createIcons();</script>
+</body>
+</html>
