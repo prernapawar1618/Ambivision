@@ -106,25 +106,9 @@ export default function Navbar() {
             {/* Start a Project Button opens the Modal */}
             <button
               onClick={() => setModalOpen(true)}
-              className="btn btn-primary btn-sm"
-              style={{
-                borderRadius: "999px",
-                cursor: "pointer",
-                padding: "0.55rem 1.35rem",
-                fontSize: "13px",
-                fontWeight: 600,
-                letterSpacing: "0.02em",
-                background: "linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%)",
-                boxShadow: "0 0 20px rgba(14, 165, 233, 0.35)",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                border: "none",
-                color: "#ffffff",
-                transition: "all 0.2s ease",
-              }}
+              className="btn btn-primary btn-sm nav-cta-btn"
             >
-              Start a Project
+              <span>Start a Project</span>
               <ArrowRight
                 style={{ width: "13px", height: "13px" }}
                 aria-hidden="true"
