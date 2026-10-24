@@ -9,28 +9,28 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/staging/', '/*?*'],
+        disallow: ['/api/', '/admin/', '/staging/'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/staging/'],
+        disallow: ['/api/', '/admin/', '/staging/'],
       },
       {
         userAgent: 'Bingbot',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/staging/'],
+        disallow: ['/api/', '/admin/', '/staging/'],
       },
       {
         userAgent: 'Applebot',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/staging/'],
+        disallow: ['/api/', '/admin/', '/staging/'],
       },
       // Permit OpenAI's search-specific bot for ChatGPT Search discovery
       {
         userAgent: 'OAI-SearchBot',
         allow: '/',
-        disallow: ['/api/', '/_next/', '/admin/', '/staging/'],
+        disallow: ['/api/', '/admin/', '/staging/'],
       },
     ],
     sitemap: `${domain}/sitemap.xml`,

@@ -6,15 +6,15 @@
 
 export const SITE_CONFIG = {
   name: "AmbiVision",
-  legalName: "AmbiVision Digital Technologies Private Limited",
+  legalName: "AmbiVision Technologies Private Limited",
   tagline: "Turning Ambition Into Reality",
   domain: process.env.NEXT_PUBLIC_SITE_URL || "https://ambivision.in",
   email: "prernapawar1618@ambivision.in",
-  telephone: "+91 80 4567 8900",
+  telephone: "+91 62 6436 8530",
   description:
     "AmbiVision is a premier digital product studio engineering high-performance web platforms, intelligent AI agents, intuitive mobile apps, and scalable custom software for ambitious businesses worldwide.",
   foundingDate: "2024-01-15",
-  locale: "en_IE",
+  locale: "en_IN",
   social: {
     linkedin: "https://www.linkedin.com/in/ambivision-technology-b42457446",
     instagram: "https://www.instagram.com/ambivision_technology",
@@ -72,6 +72,8 @@ export const SITE_CONFIG = {
     },
   ],
   keywords: [
+    "AmbiVision",
+    "AmbiVision digital product studio",
     "web development company in India",
     "website design and development services",
     "custom web application development",

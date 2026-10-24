@@ -15,8 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.domain),
   title: {
-    default:
-      "AmbiVision — Turning Ambition Into Reality | Digital Product & AI Studio",
+    default: "AmbiVision | Turning Ambition Into Reality",
     template: "%s | AmbiVision",
   },
   description: SITE_CONFIG.description,
@@ -32,6 +31,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   alternates: {
     canonical: getCanonicalUrl(""),
   },
@@ -40,22 +51,20 @@ export const metadata: Metadata = {
     locale: SITE_CONFIG.locale,
     url: getCanonicalUrl(""),
     siteName: SITE_CONFIG.name,
-    title:
-      "AmbiVision — Turning Ambition Into Reality | Digital Product & AI Studio",
+    title: "AmbiVision | Turning Ambition Into Reality",
     description: SITE_CONFIG.description,
     images: [
       {
         url: `${SITE_CONFIG.domain}/images/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "AmbiVision — Digital Product and AI Studio",
+        alt: "AmbiVision — Turning Ambition Into Reality",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "AmbiVision — Turning Ambition Into Reality | Digital Product & AI Studio",
+    title: "AmbiVision | Turning Ambition Into Reality",
     description: SITE_CONFIG.description,
     creator: "@ambivisionstudio",
     images: [`${SITE_CONFIG.domain}/images/og-default.png`],
@@ -90,7 +99,8 @@ export default function RootLayout({
       name: SITE_CONFIG.name,
       legalName: SITE_CONFIG.legalName,
       url: `${SITE_CONFIG.domain}/`,
-      logo: `${SITE_CONFIG.domain}/images/logo.png`,
+      logo: `${SITE_CONFIG.domain}/images/round-logo.png`,
+      image: `${SITE_CONFIG.domain}/images/round-logo.png`,
       description: SITE_CONFIG.description,
       foundingDate: SITE_CONFIG.foundingDate,
       email: SITE_CONFIG.email,
@@ -122,6 +132,7 @@ export default function RootLayout({
       "@id": `${SITE_CONFIG.domain}/#website`,
       url: `${SITE_CONFIG.domain}/`,
       name: SITE_CONFIG.name,
+      alternateName: ["Ambivision", "ambivision.in"],
       description: SITE_CONFIG.description,
       publisher: {
         "@id": `${SITE_CONFIG.domain}/#organization`,
@@ -147,6 +158,30 @@ export default function RootLayout({
         <link
           rel="stylesheet"
           href="https://fonts.cdnfonts.com/css/clash-display"
+        />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="48x48"
+          href="/favicon-48x48.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="/favicon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/favicon-192x192.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
         />
         <JsonLd data={globalSchema} />
       </head>

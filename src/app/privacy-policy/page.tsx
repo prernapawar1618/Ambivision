@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
           }}
         >
           <p>
-            AmbiVision Digital Technologies Private Limited ("AmbiVision", "we", "us", or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy outlines our transparent data practices across our website (<strong>ambivision.in</strong>), project inquiry forms, and career application workflows.
+            AmbiVision Technologies Private Limited ("AmbiVision", "we", "us", or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy outlines our transparent data practices across our website (<strong>ambivision.in</strong>), project inquiry forms, and career application workflows.
           </p>
 
           <section>
@@ -116,7 +116,7 @@ export default function PrivacyPolicyPage() {
               If you have any questions or concerns regarding our privacy practices, please contact our data compliance officer at:
             </p>
             <div style={{ background: "#141418", border: "1px solid #23232a", padding: "1.25rem", borderRadius: "12px", marginTop: "0.5rem" }}>
-              <div><strong>AmbiVision Digital Technologies Private Limited</strong></div>
+              <div><strong>AmbiVision Technologies Private Limited</strong></div>
               <div>Nashik, Maharashtra 422001, India</div>
               <div>Direct: <a href="mailto:prernapawar1618@ambivision.in" style={{ color: "var(--c-cyan)" }}>prernapawar1618@ambivision.in</a></div>
             </div>

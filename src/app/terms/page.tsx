@@ -50,7 +50,7 @@ export default function TermsPage() {
           }}
         >
           <p>
-            These Terms of Service ("Terms") govern your access to and use of the website located at <strong>ambivision.in</strong> and related digital engineering services provided by AmbiVision Digital Technologies Private Limited ("AmbiVision"). By accessing our website or submitting project inquiries, you agree to these Terms.
+            These Terms of Service ("Terms") govern your access to and use of the website located at <strong>ambivision.in</strong> and related digital engineering services provided by AmbiVision Technologies Private Limited ("AmbiVision"). By accessing our website or submitting project inquiries, you agree to these Terms.
           </p>
 
           <section>

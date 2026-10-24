@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -24,6 +25,39 @@ import JsonLd from "@/components/JsonLd";
 import { SITE_CONFIG } from "@/lib/seo-config";
 import { SERVICES_DATA } from "@/data/services-data";
 import { CASE_STUDIES_DATA } from "@/data/case-studies-data";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "AmbiVision | Turning Ambition Into Reality",
+  },
+  description: SITE_CONFIG.description,
+  alternates: {
+    canonical: "https://ambivision.in/",
+  },
+  openGraph: {
+    title: "AmbiVision | Turning Ambition Into Reality",
+    description: SITE_CONFIG.description,
+    url: "https://ambivision.in/",
+    siteName: "AmbiVision",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "https://ambivision.in/images/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "AmbiVision — Turning Ambition Into Reality",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AmbiVision | Turning Ambition Into Reality",
+    description: SITE_CONFIG.description,
+    creator: "@ambivisionstudio",
+    images: ["https://ambivision.in/images/og-default.png"],
+  },
+};
 
 function FeaturedProjectCards({
   isDuplicate = false,
@@ -957,15 +991,16 @@ export default function HomePage() {
               </div>
 
               <h1 className="hero-title anim-in anim-delay-1">
+                <span className="sr-only">AmbiVision — </span>
                 Turning Ambition
                 <br />
                 <em>Into Reality.</em>
               </h1>
 
               <p className="hero-desc anim-in anim-delay-2">
-                We engineer high-performance web platforms, intelligent AI
-                agents, intuitive mobile apps, and scalable digital systems for
-                ambitious brands worldwide.
+                At AmbiVision, we engineer high-performance web platforms,
+                intelligent AI agents, intuitive mobile apps, and scalable digital
+                systems for ambitious brands worldwide.
               </p>
 
               <div className="hero-actions anim-in anim-delay-3">
