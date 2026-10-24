@@ -298,7 +298,7 @@ function ContactFormInner({ initialService = "" }: ContactFormProps) {
 
             <div className="form-group">
               <label className="form-label" htmlFor="formCompany">
-                Company / Organization{" "}
+                Organization{" "}
                 <span style={{ color: "var(--c-text-muted)", fontWeight: 400 }}>
                   (optional)
                 </span>
