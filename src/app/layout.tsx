@@ -17,13 +17,8 @@ const inter = Inter({
 const clashDisplay = localFont({
   src: [
     {
-      path: "../fonts/ClashDisplayRegular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/ClashDisplayMedium.woff",
-      weight: "500",
+      path: "../fonts/ClashDisplayBold.woff",
+      weight: "700",
       style: "normal",
     },
     {
@@ -32,13 +27,19 @@ const clashDisplay = localFont({
       style: "normal",
     },
     {
-      path: "../fonts/ClashDisplayBold.woff",
-      weight: "700",
+      path: "../fonts/ClashDisplayMedium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ClashDisplayRegular.woff",
+      weight: "400",
       style: "normal",
     },
   ],
   variable: "--font-clash",
   display: "swap",
+  preload: true,
 });
 
 export const viewport: Viewport = {

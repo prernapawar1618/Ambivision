@@ -990,7 +990,7 @@ export default function HomePage() {
                 Available for New Projects · 24*7
               </div>
 
-              <h1 className="hero-title anim-in anim-delay-1">
+              <h1 className="hero-title">
                 <span className="sr-only">AmbiVision — </span>
                 Turning Ambition
                 <br />

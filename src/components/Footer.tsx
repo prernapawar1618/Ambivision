@@ -215,11 +215,11 @@ export default function Footer() {
                     marginTop: "2px",
                   }}
                 />
-                <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                  <a href="tel:+916264368530" className="footer-link" style={{ color: "var(--c-text-muted)" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                  <a href="tel:+916264368530" className="footer-link" style={{ color: "var(--c-text-muted)", padding: "4px 0" }}>
                     +91 6264368530
                   </a>
-                  <a href="tel:+919763200253" className="footer-link" style={{ color: "var(--c-text-muted)" }}>
+                  <a href="tel:+919763200253" className="footer-link" style={{ color: "var(--c-text-muted)", padding: "4px 0" }}>
                     +91 9763200253
                   </a>
                 </div>

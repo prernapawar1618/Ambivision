@@ -31,8 +31,8 @@
   /* Text */
   --c-text-primary: #f1f5f9;
   --c-text-secondary: #94a3b8;
-  --c-text-muted: #64748b;
-  --c-text-caption: #475569;
+  --c-text-muted: #94a3b8;
+  --c-text-caption: #8fa0b5;
 
   /* Semantic */
   --c-success: #10b981;
@@ -794,8 +794,16 @@ section {
 .hero-bg-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(80px);
   pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .hero-bg-orb {
+    filter: blur(40px);
+  }
 }
 
 .hero-bg-orb-1 {
@@ -891,6 +899,10 @@ section {
   line-height: 1.04;
   margin-bottom: 1.5rem;
   color: var(--c-text-primary);
+  /* Ensure critical LCP headline paints immediately on first frame */
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
 }
 
 .hero-title em {
@@ -2546,8 +2558,8 @@ section {
   transform: translateY(0);
 }
 
-/* Hero elements — animated smoothly on page load */
-.hero .anim-in {
+/* Hero elements — animated smoothly on page load, exempting critical H1 title for instant LCP */
+.hero .anim-in:not(.hero-title) {
   opacity: 1;
   transform: translateY(0);
   animation: hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -2563,6 +2575,17 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ── Content Visibility for Offscreen Sections ─────────────── */
+#services,
+#work,
+#process,
+#about,
+#faq,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }
 
 .anim-delay-1 {

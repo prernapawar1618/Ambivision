@@ -31,8 +31,8 @@ export default function HeroCanvas() {
     window.addEventListener('resize', resize, { passive: true });
 
     const isMobile = window.innerWidth < 768;
-    const count = isMobile ? 18 : 42;
-    const maxDist = isMobile ? 85 : 125;
+    const count = isMobile ? 12 : 36;
+    const maxDist = isMobile ? 75 : 120;
     const maxDistSq = maxDist * maxDist;
 
     const particles = Array.from({ length: count }, () => ({
