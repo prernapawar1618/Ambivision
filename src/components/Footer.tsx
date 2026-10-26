@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Linkedin,
@@ -27,11 +28,13 @@ export default function Footer() {
               aria-label="AmbiVision — Back to top"
             >
               <span className="image-logo">
-                <img
-                  src={roundLogo.src}
+                <Image
+                  src={roundLogo}
                   alt="AmbiVision Logo"
                   width={52}
                   height={52}
+                  loading="lazy"
+                  sizes="52px"
                 />
               </span>
 

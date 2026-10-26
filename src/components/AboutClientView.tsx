@@ -11,7 +11,23 @@ import {
   X,
 } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import ContactForm from "@/components/ContactForm";
+import dynamic from "next/dynamic";
+
+const ContactFormModal = dynamic(() => import("@/components/ContactForm"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        color: "#9CA3AF",
+        textAlign: "center",
+        padding: "1rem",
+        overflow: "hidden",
+      }}
+    >
+      Loading form...
+    </div>
+  ),
+});
 
 export default function AboutClientView() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -363,7 +379,7 @@ export default function AboutClientView() {
                   fontWeight: 700,
                   color: "#fff",
                   marginBottom: "0.5rem",
-                  fontFamily: "'Clash Display', sans-serif",
+                  fontFamily: "var(--font-display)",
                 }}
               >
                 Schedule a Discovery Call
@@ -388,7 +404,7 @@ export default function AboutClientView() {
                 </div>
               }
             >
-              <ContactForm />
+              <ContactFormModal />
             </Suspense>
           </div>
         </div>

@@ -2,10 +2,26 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import roundLogo from "../assets/round-logo.png";
-import ContactForm from "./ContactForm";
+
+const ContactFormModal = dynamic(() => import("./ContactForm"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        color: "#9CA3AF",
+        textAlign: "center",
+        padding: "2rem",
+      }}
+    >
+      Loading form...
+    </div>
+  ),
+});
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -63,11 +79,13 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="nav-logo" aria-label="AmbiVision — Home">
             <span className="image-logo">
-              <img
-                src={roundLogo.src}
+              <Image
+                src={roundLogo}
                 alt="AmbiVision Logo"
                 width={42}
                 height={42}
+                priority
+                sizes="42px"
               />
             </span>
 
@@ -269,7 +287,7 @@ export default function Navbar() {
                 </div>
               }
             >
-              <ContactForm />
+              <ContactFormModal />
             </Suspense>
           </div>
         </div>

@@ -8,6 +8,10 @@
 
 /* ── CSS Custom Properties (Design Tokens) ──────────────────── */
 :root {
+  /* Typography */
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-clash), "Clash Display", var(--font-sans);
+
   /* Color Palette */
   --c-obsidian: #050508;
   --c-carbon: #0c0c10;
@@ -116,7 +120,7 @@ html {
 body {
   background-color: var(--c-obsidian);
   color: var(--c-text-primary);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-sans);
 
   line-height: 1.6;
   overflow-x: hidden;
@@ -187,7 +191,7 @@ ol {
 
 /* ── Typography ──────────────────────────────────────────────── */
 .font-display {
-  font-family: "Clash Display", "Inter", sans-serif;
+  font-family: var(--font-display);
 }
 
 .font-mono {
@@ -526,7 +530,7 @@ section {
 }
 
 .nav-logo .logo-name {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.08em;
@@ -694,7 +698,7 @@ section {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--c-text-secondary);
@@ -880,7 +884,7 @@ section {
 }
 
 .hero-title {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-7xl);
   letter-spacing: 1px;
@@ -931,7 +935,7 @@ section {
 }
 
 .hero-stat-value {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--fs-2xl);
   color: var(--c-text-primary);
@@ -1144,7 +1148,7 @@ section {
 }
 
 .service-name {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--fs-xl);
   opacity: 0.95;
@@ -1761,7 +1765,7 @@ section {
 }
 
 .process-title {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--c-text-primary);
@@ -1819,7 +1823,7 @@ section {
 }
 
 .process-num {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 2.5rem;
   background: var(--g-brand);
@@ -1832,7 +1836,7 @@ section {
 }
 
 .process-name {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-xl);
   margin-bottom: 0.5rem;
@@ -1911,7 +1915,7 @@ section {
 }
 
 .about-value-name {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--fs-base);
   color: var(--c-text-primary);
@@ -1937,7 +1941,7 @@ section {
 }
 
 .about-mission-title {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-3xl);
   font-weight: 700;
   color: var(--c-text-primary);
@@ -2702,7 +2706,7 @@ section {
 }
 
 .subpage-title {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.12;
@@ -2769,7 +2773,7 @@ section {
 }
 
 .takeaways-title {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-base);
   font-weight: 700;
   color: var(--c-text-primary);
@@ -2808,7 +2812,7 @@ section {
 }
 
 .metric-number {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
   background: var(--g-brand);
@@ -2842,7 +2846,7 @@ section {
 }
 
 .prose h2 {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--c-text-primary);
@@ -2850,7 +2854,7 @@ section {
 }
 
 .prose h3 {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-xl);
   font-weight: 600;
   color: var(--c-text-primary);
@@ -2904,7 +2908,7 @@ section {
 }
 
 .tier-name {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-xl);
   font-weight: 700;
   color: var(--c-text-primary);
@@ -2925,7 +2929,7 @@ section {
 }
 
 .tier-price-inr {
-  font-family: "Clash Display", sans-serif;
+  font-family: var(--font-display);
   font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--c-text-primary);

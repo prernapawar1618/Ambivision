@@ -1,9 +1,45 @@
 import type { Metadata, Viewport } from "next";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SITE_CONFIG, getCanonicalUrl } from "@/lib/seo-config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const clashDisplay = localFont({
+  src: [
+    {
+      path: "../fonts/ClashDisplayRegular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ClashDisplayMedium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ClashDisplaySemibold.woff",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ClashDisplayBold.woff",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-clash",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   themeColor: "#050508",
@@ -142,23 +178,8 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${clashDisplay.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="preconnect" href="https://fonts.cdnfonts.com" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.cdnfonts.com/css/clash-display"
-        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"
@@ -185,7 +206,7 @@ export default function RootLayout({
         />
         <JsonLd data={globalSchema} />
       </head>
-      <body>
+      <body className={inter.className}>
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />

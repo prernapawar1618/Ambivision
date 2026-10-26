@@ -5,7 +5,22 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, CheckCircle2, X } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { SERVICES_DATA } from "@/data/services-data";
-import ContactForm from "@/components/ContactForm";
+import dynamic from "next/dynamic";
+
+const ContactFormModal = dynamic(() => import("@/components/ContactForm"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        color: "#9CA3AF",
+        textAlign: "center",
+        padding: "2rem",
+      }}
+    >
+      Loading form...
+    </div>
+  ),
+});
 
 export default function ServicesClientView() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -504,7 +519,7 @@ export default function ServicesClientView() {
                 </div>
               }
             >
-              <ContactForm />
+              <ContactFormModal />
             </Suspense>
           </div>
         </div>
