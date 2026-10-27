@@ -1,46 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
+import { inter } from "./fonts";
 import "./globals.css";
 import { SITE_CONFIG, getCanonicalUrl } from "@/lib/seo-config";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const clashDisplay = localFont({
-  src: [
-    {
-      path: "../fonts/ClashDisplayBold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/ClashDisplaySemibold.woff",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../fonts/ClashDisplayMedium.woff",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/ClashDisplayRegular.woff",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-clash",
-  display: "swap",
-  preload: true,
-});
 
 export const viewport: Viewport = {
   themeColor: "#050508",
@@ -179,8 +143,15 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en" className={`${inter.variable} ${clashDisplay.variable}`}>
+    <html lang="en" className={inter.variable}>
       <head>
+        <link
+          rel="preload"
+          href="/fonts/ClashDisplayBold.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"

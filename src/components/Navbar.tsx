@@ -84,7 +84,6 @@ export default function Navbar() {
                 alt="AmbiVision Logo"
                 width={42}
                 height={42}
-                priority
                 sizes="42px"
               />
             </span>

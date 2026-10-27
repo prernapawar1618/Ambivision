@@ -19,8 +19,11 @@ import {
   MapPin,
   Mic,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 import HeroCanvas from "@/components/HeroCanvas";
-import ContactForm from "@/components/ContactForm";
+const ContactForm = dynamic(() => import("@/components/ContactForm"), {
+  ssr: true,
+});
 import JsonLd from "@/components/JsonLd";
 import { SITE_CONFIG } from "@/lib/seo-config";
 import { SERVICES_DATA } from "@/data/services-data";

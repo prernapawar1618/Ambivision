@@ -32,7 +32,11 @@
     "last 2 Firefox versions",
     "last 2 Safari versions",
     "last 2 Edge versions",
-    "fully supports es6-module",
+    "Chrome >= 110",
+    "Firefox >= 115",
+    "Safari >= 16.4",
+    "Edge >= 110",
+    "iOS >= 16.4",
     "not dead"
   ]
 }

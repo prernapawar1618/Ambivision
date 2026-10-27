@@ -4,13 +4,44 @@
    Version: 2.0 Production
    ============================================================ */
 
-/* ── Fonts: Loaded in layout.tsx via parallel preconnected link tags ── */
+/* ── Fonts: Clash Display loaded from /fonts/ with preload in layout.tsx ── */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplayBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplaySemibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplayMedium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('/fonts/ClashDisplayRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── CSS Custom Properties (Design Tokens) ──────────────────── */
 :root {
   /* Typography */
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: var(--font-clash), "Clash Display", var(--font-sans);
+  --font-display: "Clash Display", var(--font-sans);
 
   /* Color Palette */
   --c-obsidian: #050508;
@@ -2562,7 +2593,7 @@ section {
 .hero .anim-in:not(.hero-title) {
   opacity: 1;
   transform: translateY(0);
-  animation: hero-fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: hero-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes hero-fade-in {

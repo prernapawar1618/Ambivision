@@ -53,7 +53,9 @@ export default function HeroCanvas() {
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
     };
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    if (!isMobile) {
+      window.addEventListener('mousemove', onMouseMove, { passive: true });
+    }
 
     const draw = () => {
       if (!isVisible) return;
@@ -63,29 +65,33 @@ export default function HeroCanvas() {
       // 1. Draw particle dots
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+        if (!isMobile) {
+          p.x += p.vx;
+          p.y += p.vy;
 
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+          if (p.y < 0) p.y = height;
+          if (p.y > height) p.y = 0;
+        }
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
         ctx.fill();
 
-        // Mouse interaction
-        const mdx = p.x - mouseX;
-        const mdy = p.y - mouseY;
-        const mdistSq = mdx * mdx + mdy * mdy;
-        if (mdistSq < 19600) {
-          // 140^2 = 19600
-          const mdist = Math.sqrt(mdistSq);
-          const force = (1 - mdist / 140) * 0.35;
-          p.x += (mdx / mdist) * force * 1.5;
-          p.y += (mdy / mdist) * force * 1.5;
+        // Mouse interaction (desktop only)
+        if (!isMobile) {
+          const mdx = p.x - mouseX;
+          const mdy = p.y - mouseY;
+          const mdistSq = mdx * mdx + mdy * mdy;
+          if (mdistSq < 19600) {
+            // 140^2 = 19600
+            const mdist = Math.sqrt(mdistSq);
+            const force = (1 - mdist / 140) * 0.35;
+            p.x += (mdx / mdist) * force * 1.5;
+            p.y += (mdy / mdist) * force * 1.5;
+          }
         }
       }
 
@@ -111,7 +117,7 @@ export default function HeroCanvas() {
         }
       }
 
-      if (!prefersReducedMotion) {
+      if (!prefersReducedMotion && !isMobile) {
         animId = requestAnimationFrame(draw);
       }
     };
@@ -121,7 +127,7 @@ export default function HeroCanvas() {
       (entries) => {
         entries.forEach((entry) => {
           isVisible = entry.isIntersecting;
-          if (isVisible && !prefersReducedMotion) {
+          if (isVisible && !prefersReducedMotion && !isMobile) {
             cancelAnimationFrame(animId);
             animId = requestAnimationFrame(draw);
           } else {
@@ -157,7 +163,9 @@ export default function HeroCanvas() {
       }
       observer.disconnect();
       window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMouseMove);
+      if (!isMobile) {
+        window.removeEventListener('mousemove', onMouseMove);
+      }
     };
   }, []);
 
